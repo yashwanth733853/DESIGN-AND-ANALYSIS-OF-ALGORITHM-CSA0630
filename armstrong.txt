@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<math.h>
+int order(int n)
+{
+	int count=0;
+	while(n!=0)
+	{
+		count++;
+		n=n/10;
+	}
+	return count;
+}
+int isArmstrong(int n,int order)
+{
+	if (n==0)
+	{
+		return 0;
+	}
+	else
+	{
+		return pow(n%10,order) + isArmstrong(n/10,order);
+	}
+}
+int main()
+{
+	int num,ord;
+	printf("enter a number: ");
+	scanf("%d",&num);
+	ord=order(num);
+	if(num == isArmstrong(num,ord))
+	{
+		printf("%d is a armstrong number\n.",num);
+	}
+	else
+	{
+		printf("%d is not an armstrong number\n.",num);
+	}
+	return 0;
+}
